@@ -214,7 +214,7 @@ namespace SeleniumTest
 
             if (assertion1 && assertion2 && assertion3 && assertion4 && assertion5)
             {
-                tOut.Write("All Assertions returned PASSED");
+                tOut.Write("All Assertions PASSED");
   
                 tOut.Write("\n");
 
