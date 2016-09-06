@@ -44,7 +44,7 @@ namespace SeleniumTest
 
             tOut.Write("We will first test our seeding. Our list should include Ben Felix ");
 
-            tOut.Write("\n press enter to continue. ");
+            tOut.Write("\n Allow the results to load then press enter to continue. ");
             tOut.Write("\n");
             String password = tIn.ReadLine(); //  pause the console get tester to input password.
 
@@ -65,6 +65,10 @@ namespace SeleniumTest
                 tOut.Write("\n");
                 proceed = tIn.ReadLine();
 
+            }
+            else
+            {
+                tOut.Write("Assertion 1 failed, Ben Felix was not found in our search. Did you wait for the results?");
             }
             tOut.Write("Now we will test the Add human function \n");
  
@@ -89,7 +93,7 @@ namespace SeleniumTest
             element.SendKeys(testName);
 
             tOut.Write("The save button should now be enabled. \n");
-
+            tOut.Write("\n");
             tOut.Write("please enter an address and press enter: ");
             tOut.Write("\n");
             string testAddress = tIn.ReadLine();
@@ -118,6 +122,7 @@ namespace SeleniumTest
             alert.Accept();
 
             tOut.Write("Now we will test the filter function by entering \n any part of the name you submitted. ");
+            tOut.Write("\n");
             tOut.Write("please enter any or all of the name you submitted: ");
             string partialName = tIn.ReadLine();
 
@@ -129,18 +134,27 @@ namespace SeleniumTest
             elementSearchBtn = driver.FindElement(By.Id("searchBtn"));
             elementSearchBtn.Click();
 
+            tOut.Write("Allow the results to load and then press enter. ");
+            tOut.Write("\n");
+ 
+            proceed = tIn.ReadLine();
+
+
+
             tableElement = driver.FindElement(By.Id(testName));
+            tableData = tableElement.Text;
 
             if (tableData == testName)
             {
                 assertion2 = true;
-                tOut.Write("Assertion 2 passed, "+testName+" was found in our search");
-                tOut.Write("press enter to continue. ");
+                tOut.Write("Assertion 2 passed, "+testName+" was found in our search.");
                 tOut.Write("\n");
-                proceed = tIn.ReadLine();
-                tOut.Write("\n \n \n");
-                
 
+
+            }
+            else
+            {
+                tOut.Write("Assertion 2 failed, " + testName + " was not found in our search. Did you wait for the results? ");
             }
 
             tOut.Write("press enter to continue. ");
@@ -166,7 +180,7 @@ namespace SeleniumTest
             if (testAge == "33")
             {
                 assertion3 = true;
-                tOut.Write("Assertion 3 passed Age was entered and returned ");
+                tOut.Write("Assertion 3 passed 33 was entered and returned ");
 
                 tOut.Write("press enter to continue. ");
                 tOut.Write("\n");
@@ -177,7 +191,7 @@ namespace SeleniumTest
             if (testHair == "Blonde")
             {
                 assertion4 = true;
-                tOut.Write("Assertion 4 passed Hair was entered and returned ");
+                tOut.Write("Assertion 4 passed "+ testHair+ " was entered and returned ");
 
                 tOut.Write("press enter to continue. ");
                 tOut.Write("\n");
@@ -188,7 +202,7 @@ namespace SeleniumTest
             if (testInterests == "Water Polo, Golf, Travel")
             {
                 assertion5 = true;
-                tOut.Write("Assertion 5 passed Interests were entered and returned ");
+                tOut.Write("Assertion 5 passed " + testInterests + " were entered and returned ");
 
                 tOut.Write("press enter to continue. ");
                 tOut.Write("\n");
